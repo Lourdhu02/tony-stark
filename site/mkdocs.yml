@@ -1,0 +1,153 @@
+site_name: tony-stark
+site_description: A self-enhancement lab from silicon to robots to AI, built one Mark at a time.
+site_url: https://lourdhu02.github.io/tony-stark/
+repo_url: https://github.com/Lourdhu02/tony-stark
+repo_name: Lourdhu02/tony-stark
+edit_uri: edit/main/
+copyright: Code MIT · Content CC BY 4.0 · © 2026 Lourdhu02
+
+docs_dir: _src
+site_dir: _build
+
+theme:
+  name: material
+  icon:
+    logo: material/robot-industrial
+    repo: fontawesome/brands/github
+  favicon: assets/banner.svg
+  font:
+    text: Inter
+    code: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: light green
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: green
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - footnotes
+  - tables
+  - toc:
+      permalink: "#"
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: math
+          class: arithmatex
+          format: !!python/object/apply:pymdownx.arithmatex.arithmatex_fenced_format {kwds: {mode: generic, tag: div}}
+
+validation:
+  omitted_files: info
+  absolute_links: info
+  unrecognized_links: warn
+  anchors: warn
+
+nav:
+  - Home: README.md
+  - Start:
+      - The method: docs/method.md
+      - Roadmap: ROADMAP.md
+      - Skill tree: docs/skill-tree.md
+      - Self-assessment: docs/self-assessment.md
+      - Library: docs/library.md
+      - Papers (master index): docs/papers.md
+      - Hardware: HARDWARE.md
+      - Lab notes: lab-notes/README.md
+  - Phase 1–2:
+      - All Marks: marks/README.md
+      - The canon: marks/REFERENCES.md
+      - "I · Box of Scraps":
+          - Dossier: marks/mark-01-box-of-scraps/README.md
+          - Field manuals:
+              - Index: marks/mark-01-box-of-scraps/notes/README.md
+              - 01 Memory hierarchy: marks/mark-01-box-of-scraps/notes/01-memory-hierarchy.md
+              - 02 LU & floating point: marks/mark-01-box-of-scraps/notes/02-lu-and-floating-point.md
+              - 03 Numerical integration: marks/mark-01-box-of-scraps/notes/03-numerical-integration.md
+              - 04 Allocators: marks/mark-01-box-of-scraps/notes/04-allocators.md
+              - 05 Processes, pipes, signals: marks/mark-01-box-of-scraps/notes/05-processes-pipes-signals.md
+          - "01 linalg": marks/mark-01-box-of-scraps/01-linalg/README.md
+          - "02 sim": marks/mark-01-box-of-scraps/02-sim/README.md
+          - "03 malloc": marks/mark-01-box-of-scraps/03-malloc/README.md
+          - "04 shell": marks/mark-01-box-of-scraps/04-shell/README.md
+          - References: marks/mark-01-box-of-scraps/REFERENCES.md
+      - "II · Silicon": marks/mark-02-silicon/README.md
+      - "III · The Kernel": marks/mark-03-the-kernel/README.md
+      - "IV · Arc Reactor": marks/mark-04-arc-reactor/README.md
+      - "V · Flight Stabilizers": marks/mark-05-flight-stabilizers/README.md
+  - Phase 3–4:
+      - "VI · DUM-E": marks/mark-06-dum-e/README.md
+      - "VII · Autopilot": marks/mark-07-autopilot/README.md
+      - "VIII · HUD": marks/mark-08-hud/README.md
+      - "IX · J.A.R.V.I.S.": marks/mark-09-jarvis/README.md
+      - "X · Suit Up": marks/mark-10-suit-up/README.md
+  - Advanced robotics:
+      - "XI · Blueprint":
+          - Dossier: marks/mark-11-blueprint/README.md
+          - Chapters:
+              - Index: marks/mark-11-blueprint/chapters/README.md
+              - 00 Notation: marks/mark-11-blueprint/chapters/00-notation.md
+              - 01 Rotations SO(3): marks/mark-11-blueprint/chapters/01-rotations.md
+              - 02 Rigid motions SE(3): marks/mark-11-blueprint/chapters/02-rigid-motions.md
+              - 03 Kinematic chains: marks/mark-11-blueprint/chapters/03-kinematic-chains.md
+              - 04 Newton–Euler: marks/mark-11-blueprint/chapters/04-newton-euler.md
+              - 05 RNEA: marks/mark-11-blueprint/chapters/05-rnea.md
+              - 06 Mass matrix & passivity: marks/mark-11-blueprint/chapters/06-mass-matrix.md
+              - 07 ABA: marks/mark-11-blueprint/chapters/07-aba.md
+              - 08 Contact: marks/mark-11-blueprint/chapters/08-contact.md
+          - "01 lie": marks/mark-11-blueprint/01-lie/README.md
+          - "02 chains": marks/mark-11-blueprint/02-chains/README.md
+          - "03 dynamics": marks/mark-11-blueprint/03-dynamics/README.md
+          - References: marks/mark-11-blueprint/REFERENCES.md
+      - "XII · Hulkbuster": marks/mark-12-hulkbuster/README.md
+      - "XIII · Extremis": marks/mark-13-extremis/README.md
+  - Agents:
+      - Overview: claude/README.md
+      - Repo rules (CLAUDE.md): CLAUDE.md
+      - tutor: claude/agents/tutor.md
+      - reviewer: claude/agents/reviewer.md
+      - quizmaster: claude/agents/quizmaster.md
+      - paper-guide: claude/agents/paper-guide.md
+      - lab-scribe: claude/agents/lab-scribe.md
+      - curriculum-architect: claude/agents/curriculum-architect.md
+  - Community:
+      - Contributing: CONTRIBUTING.md
+      - Code of conduct: CODE_OF_CONDUCT.md
+      - Security: SECURITY.md
+      - Content license: LICENSE-CONTENT.md

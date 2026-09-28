@@ -1,0 +1,30 @@
+name: Erratum
+description: A wrong equation, claim, citation, or broken link in the content
+title: "[erratum] "
+labels: ["erratum"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Where
+      description: File and section (e.g. marks/mark-11-blueprint/chapters/05-rnea.md §5)
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong
+      description: Quote the text or equation, then explain the error.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: A derivation, a numerical check, or a source (with page or section).
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: Suggested fix

@@ -1,0 +1,26 @@
+name: Paper suggestion
+description: A landmark or essential work that belongs in a folder's REFERENCES.md
+title: "[paper] "
+labels: ["references"]
+body:
+  - type: input
+    id: citation
+    attributes:
+      label: Citation
+      description: Authors, year, exact title, venue
+    validations:
+      required: true
+  - type: input
+    id: folder
+    attributes:
+      label: Folder
+      description: Which folder's REFERENCES.md (e.g. marks/mark-07-autopilot)
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it belongs
+      description: One or two sentences on what it adds for a learner at this point, plus the sections to read.
+    validations:
+      required: true

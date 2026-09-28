@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this curriculum or its materials, please cite it as below."
+title: "tony-stark: a self-enhancement lab from silicon to robots to AI"
+abstract: >-
+  An open, test-driven curriculum in thirteen "Marks": systems programming,
+  computer architecture, operating systems, embedded systems, control,
+  manipulation, estimation and SLAM, GPU perception, LLM agents, and advanced
+  robotics (rigid-body dynamics, optimal control and legged locomotion, robot
+  learning), with graduate-level chapters, validated test suites, and
+  annotated references.
+type: software
+authors:
+  - alias: Lourdhu02
+repository-code: "https://github.com/Lourdhu02/tony-stark"
+license: MIT
+keywords:
+  - robotics
+  - systems programming
+  - rigid-body dynamics
+  - optimal control
+  - robot learning
+  - curriculum

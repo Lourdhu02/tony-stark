@@ -1,0 +1,34 @@
+name: Test bug
+description: A test that accepts a wrong implementation, or rejects a correct one
+title: "[test] "
+labels: ["tests"]
+body:
+  - type: input
+    id: test
+    attributes:
+      label: Test
+      description: System and test name (e.g. 03-dynamics / test_passivity_identity)
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - Passes an incorrect implementation (too weak)
+        - Fails a correct implementation (wrong or flaky)
+        - Hangs or crashes the harness
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: Describe the implementation property that exposes it. Please do NOT paste a full solution to a stubbed system.
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: OS, compiler / Python version, output of the failing command

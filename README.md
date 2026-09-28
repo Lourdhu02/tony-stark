@@ -4,9 +4,12 @@
 
 <p align="center">
   <a href="https://github.com/Lourdhu02/tony-stark/actions/workflows/armory.yml"><img src="https://img.shields.io/github/actions/workflow/status/Lourdhu02/tony-stark/armory.yml?branch=main&style=flat-square&label=armory&labelColor=050805&color=00ff41" alt="armory"></a>
-  <img src="https://img.shields.io/badge/marks_online-0%2F10-00ff41?style=flat-square&labelColor=050805" alt="marks online">
-  <img src="https://img.shields.io/badge/stack-C_·_Rust_·_C%2B%2B_·_Python_·_CUDA-00ff41?style=flat-square&labelColor=050805" alt="stack">
-  <img src="https://img.shields.io/badge/license-MIT-00ff41?style=flat-square&labelColor=050805" alt="license">
+  <a href="https://github.com/Lourdhu02/tony-stark/actions/workflows/pages.yml"><img src="https://img.shields.io/github/actions/workflow/status/Lourdhu02/tony-stark/pages.yml?branch=main&style=flat-square&label=docs&labelColor=050805&color=00ff41" alt="docs"></a>
+  <a href="https://lourdhu02.github.io/tony-stark/"><img src="https://img.shields.io/badge/site-lourdhu02.github.io-00ff41?style=flat-square&labelColor=050805" alt="site"></a>
+  <img src="https://img.shields.io/badge/marks-13-00ff41?style=flat-square&labelColor=050805" alt="marks">
+  <a href="docs/papers.md"><img src="https://img.shields.io/badge/references-266-00ff41?style=flat-square&labelColor=050805" alt="references"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-00ff41?style=flat-square&labelColor=050805" alt="code license"></a>
+  <a href="LICENSE-CONTENT.md"><img src="https://img.shields.io/badge/content-CC_BY_4.0-00ff41?style=flat-square&labelColor=050805" alt="content license"></a>
 </p>
 
 <p align="center"><code>wake up, engineer... the lab has you.</code></p>
@@ -67,6 +70,30 @@ No tutorial-following, and no finishing without proof.
 | [**Library**](docs/library.md) | every book and course, mapped to Marks and chapters |
 | [**Self-assessment**](docs/self-assessment.md) | 16 domains × 6 levels: your Stark score, re-scored after every Mark |
 
+### `> ls .claude/agents/`
+
+Six AI tutors ship with the repo as Claude Code subagents. They're built around one rule: **you write the solutions.**
+
+```text
+tutor                  stuck? climbs the hint ladder, asks before it tells       · never writes your code
+reviewer               senior-engineer review of a finished system               · never rewrites it
+quizmaster             Sunday spaced retrieval from finished Marks               · never shows answers first
+paper-guide            three-pass reading plans for any REFERENCES.md entry      · never invents details
+lab-scribe             drafts the weekly note from git + test results            · never invents learnings
+curriculum-architect   builds new Marks to the lab's validation standard         · never commits solutions
+```
+
+→ [`.claude/README.md`](.claude/README.md) · repo rules for any assistant: [`CLAUDE.md`](CLAUDE.md)
+
+### `> cat papers.idx`
+
+Every knowledge folder has an annotated **`REFERENCES.md`** saying *why* each work matters there, *what* to read, and how hard it is (★☆☆ → ★★★). There are 266 works from 1927 to 2025, generated from one [verified catalog](tools/refs/catalog.py) and checked for freshness in CI.
+
+| Start with | Then |
+|---|---|
+| [The canon](marks/REFERENCES.md): 12 works every roboticist should know | [Master index](docs/papers.md): chronological, with back-links |
+| [How to read a paper](docs/papers.md#how-to-read-a-paper): the three-pass method | [Learning science](docs/REFERENCES.md): why the method works |
+
 ### `> cat boot_sequence`
 
 ```sh
@@ -105,17 +132,19 @@ Every bar starts empty. The tests are the spec: fill them.
 
 ```text
 tony-stark/
-├── ROADMAP.md            overview: ten Marks, phases, timeline
+├── ROADMAP.md            overview: thirteen Marks, five phases, timeline
 ├── HARDWARE.md           what to buy, when, and how not to set it on fire
-├── docs/                 method · skill tree · library · self-assessment
+├── docs/                 method · skill tree · library · self-assessment · papers index
 ├── marks/
 │   ├── mark-01-box-of-scraps/   ▶ active: 4 systems, 79 tests, field manuals
 │   ├── mark-02 … mark-10/       dossiers (code unlocks when you arrive)
 │   ├── mark-11-blueprint/       ◇ advanced robotics textbook (9 chapters) + 42-test lab
 │   └── mark-12, mark-13/        dossiers: optimal control and legged robots, robot learning
 ├── lab-notes/            weekly log (copy TEMPLATE.md)
-├── tools/armory.sh       test runner + dashboard
-└── .github/workflows/    ci: -Werror, asan/ubsan, regression gate
+├── tools/                armory.sh (test dashboard) · refs/ (reference catalog + generator)
+├── site/                 MkDocs Material site → GitHub Pages
+├── .claude/agents/       six AI tutors (Claude Code subagents)
+└── .github/              ci (armory, pages) · issue/PR templates · dependabot
 ```
 
 ### `> man tony-stark`
@@ -127,6 +156,11 @@ tony-stark/
 | **Now** | [`Mark I · Box of Scraps`](marks/mark-01-box-of-scraps): matrix library, physics sim, `malloc`, a Unix shell |
 | **Kit** | [`HARDWARE.md`](HARDWARE.md): nothing needed until Mark IV |
 | **Log** | [`lab-notes/`](lab-notes) |
+
+### `> cat LICENSE*`
+
+Code: [MIT](LICENSE) · Content (chapters, manuals, dossiers, annotations): [CC BY 4.0](LICENSE-CONTENT.md) · Cite it with [`CITATION.cff`](CITATION.cff) (GitHub's **Cite this repository** button).
+Contributions welcome: errata, test bugs and papers. Never solutions. See [CONTRIBUTING](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md) · [Security](SECURITY.md).
 
 <br>
 
