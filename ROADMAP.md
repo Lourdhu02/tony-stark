@@ -1,202 +1,76 @@
 # Roadmap
 
-> "Tony Stark was able to build this in a cave! With a box of scraps!"
+> Stark is an engineering generalist who can take an idea from first principles to working hardware.
+> This roadmap builds that same full-stack depth: from silicon to an AI that safely moves a robot.
 
-Stark is an engineering generalist who can take an idea from first principles to working hardware.
-He understands every layer: physics, electronics, low-level software, control, perception and AI.
-This roadmap aims for that same full-stack depth, from silicon up to an AI assistant that moves a robot.
+This page is the **overview**. The depth lives in each Mark's dossier: the week-by-week syllabus, project specs, pitfalls, a quiz with answers, interview questions and a boss fight.
+The [skill tree](docs/skill-tree.md) shows how the Marks depend on each other, and [the method](docs/method.md) shows how to work through them.
 
 ## Assumptions
 
 | | |
 |---|---|
-| Starting point | Working ML engineer: comfortable with Python, PyTorch, training and serving models. ML basics are skipped. |
-| Time | About 10–12 hrs/week, which puts the core path at roughly 18 months. |
-| Hardware | Simulation first. Marks I–III and V need no hardware. Hardware starts at Mark IV and is optional after that (see [HARDWARE.md](HARDWARE.md)). |
-| Languages | C (Mark I), Rust (Marks II–III), C++ (robotics/ROS 2), Python (simulation prototypes, ML), CUDA (Mark VIII). |
+| **Starting point** | Working ML engineer: Python, PyTorch, training and serving models. ML basics are skipped; ML intuition is used everywhere. |
+| **Time** | 10–12 hrs/week ([the weekly loop](docs/method.md#the-weekly-budget-about-11-hours)), about 18 months for Marks I–IX, then the capstone |
+| **Hardware** | Simulation first. Only Mark IV *requires* hardware (about $150). See [HARDWARE.md](HARDWARE.md). |
+| **Languages** | C (I, III, IV) · Rust (II, III) · Python (V–IX) · C++ (ROS 2, as needed) · CUDA (VIII) |
+| **Target** | A Stark score of **7/10** on the [self-assessment](docs/self-assessment.md): level 3 ("builder") or better in every domain |
+
+## The ten Marks
+
+| Mark | Codename | Weeks | The question it answers | Headline exit criterion | Dossier |
+|---|---|---|---|---|---|
+| **I** | Box of Scraps | 1–6 | What is a computer *actually* doing when my code runs? | 79/79 tests; `python3` runs on your `malloc`, inside your shell | [open →](marks/mark-01-box-of-scraps) |
+| **II** | Silicon | 7–14 | How does hardware execute an instruction? | a RISC-V emulator passing the official `rv32ui` tests | [open →](marks/mark-02-silicon) |
+| **III** | The Kernel | 15–22 | How do many things share one machine safely? | a preemptive Rust kernel on QEMU; a loom-verified SPSC queue | [open →](marks/mark-03-the-kernel) |
+| **IV** | Arc Reactor | 23–30 | How does code touch the physical world? | a motor held ±5% at 1 kHz with p99 jitter < 10 µs, on your own PCB | [open →](marks/mark-04-arc-reactor) |
+| **V** | Flight Stabilizers | 31–38 | How do you make an unstable system behave? | a cart-pole swing-up + LQR catch; a quadrotor figure-8 < 10 cm RMS | [open →](marks/mark-05-flight-stabilizers) |
+| **VI** | DUM-E | 39–48 | How does a robot arm reach, grasp and place? | ≥ 80% vision-guided pick success over 50 randomized trials | [open →](marks/mark-06-dum-e) |
+| **VII** | Autopilot | 49–58 | Where am I, what's around me, how do I get there? | autonomous exploration and navigation of an unseen building with your SLAM | [open →](marks/mark-07-autopilot) |
+| **VIII** | HUD | 59–66 | How do you see the world in real time on a small computer? | ≥ 30 FPS, < 50 ms glass-to-glass, world-locked AR labels | [open →](marks/mark-08-hud) |
+| **IX** | J.A.R.V.I.S. | 67–76 | How does an AI safely act on the physical world? | ≥ 90% tool accuracy, 0 unsafe actions, e-stop < 200 ms | [open →](marks/mark-09-jarvis) |
+| **X** | Suit Up | 77+ | Can I integrate it all into one system? | a capstone meeting its design-doc metric, with confidence intervals | [open →](marks/mark-10-suit-up) |
+
+## Phases and checkpoints
+
+| Phase | Marks | You become able to… | Checkpoint |
+|---|---|---|---|
+| **1 · Foundations** (the cave) | I–III | reason about any program down to the cache line, instruction and syscall | re-score: C, Numerics, Architecture and OS reach 3 |
+| **2 · Hardware and control** (the workshop) | IV–V | make physical things move precisely, on time | re-score: Embedded, Control and Dynamics reach 3 |
+| **3 · Robotics** (the robots) | VI–VII | build robots that perceive, localize, plan and manipulate | re-score: Kinematics, Estimation and Planning reach 3 |
+| **4 · Intelligence** (the AI) | VIII–X | put real-time AI on robots, safely, and prove it works | re-score: GPU, Perception and Agents reach 3–4 → **Stark score ≥ 7** |
+
+## Timeline
+
+```text
+week    1         11        21        31        41        51        61        71        81
+Mk I    ██████
+Mk II         ████████
+Mk III                ████████
+Mk IV                         ████████
+Mk V                                  ████████
+Mk VI                                         ██████████
+Mk VII                                                  ██████████
+Mk VIII                                                           ████████
+Mk IX                                                                     ██████████
+Mk X                                                                                ██████████████▶
+```
+
+Slipping is normal. A Mark is done when its exit criteria are met, not when its weeks run out. Never skip a Mark's exit criteria to stay on schedule; move the schedule instead.
 
 ## Rules of the lab
 
 1. **Build it from scratch first, then use the library.** Write your own Kalman filter before you `import filterpy`.
-2. **Every Mark ends with a demo and a write-up.** Record a GIF or video, add a README with results, and write down what broke.
-3. **Exit criteria are measurable.** A Mark is done when its numbers are hit, not when the tutorial is finished.
-4. **Tests and CI from day one.** Each project has a test suite that runs in GitHub Actions.
-5. **Weekly lab note** in `lab-notes/` covering what you built, what you learned and what's next (use the [template](lab-notes/TEMPLATE.md)).
+2. **Every Mark ends with a boss fight and a write-up.** Record it, publish it, and write down what broke.
+3. **Exit criteria are numbers.** Not "I finished the tutorial".
+4. **Tests and CI from day one.** A completed system never regresses (the `COMPLETED` gate).
+5. **Weekly lab note** in [`lab-notes/`](lab-notes). No note, no week.
 
-Weekly rhythm (about 11 hrs): 2 theory sessions of about 2 h, 2 build sessions of about 3 h, and 1 h for the lab note.
-
----
-
-## Phase 1: Foundations (the cave)
-
-### Mark I: "Box of Scraps" (weeks 1–6)
-*Systems programming in C, plus numerical simulation from zero.*
-
-➜ **Built:** [`marks/mark-01-box-of-scraps`](marks/mark-01-box-of-scraps), with stubs, 79 tests and CI.
-
-| Build | What you learn |
-|---|---|
-| `01-linalg`: a matrix library (multiplication, LU with pivoting, solve, inverse, determinant) plus a cache-aware matmul | memory layout, cache effects, numerical stability |
-| `02-sim`: Euler, RK4 and symplectic Verlet integrators on a pendulum and a spring-mass system | ODEs, convergence order, energy conservation |
-| `03-malloc`: an allocator with splitting and coalescing, run under real programs via `LD_PRELOAD` | virtual memory, heap layout, fragmentation |
-| `04-shell`: `stark-shell`, a Unix shell with pipes, redirection, quoting, background jobs and signals | processes, `fork`/`exec`, file descriptors, signals |
-
-- **Resources:** *CS:APP* (Bryant & O'Hallaron) ch. 6, 8 and 9; *OSTEP* (the virtualization part); Beej's guides.
-- **Exit criteria:**
-  - `mat_mul_fast` is 3x or more faster than naive at n=512.
-  - RK4 pendulum energy drift stays under 0.1% over 100 s at dt=0.05, and you can explain why Verlet beats RK4 over long horizons.
-  - `python3` runs on your allocator.
-  - `ls | grep '\.c$' | wc -l > out.txt` works in your shell.
-  - All 79 tests pass.
-
-### Mark II: "Silicon" (weeks 7–14)
-*How computers actually work, from NAND gates to a RISC-V CPU.*
-
-| Build | What you learn |
-|---|---|
-| nand2tetris Part 1: build a CPU from NAND gates | digital logic, ALU, memory, the fetch–decode–execute loop |
-| CHIP-8 emulator in Rust | Rust basics, instruction decoding |
-| RV32I emulator in Rust that runs C programs cross-compiled with `riscv64-unknown-elf-gcc` | ISA, ELF loading, calling conventions |
-| *(optional)* a 5-stage pipelined RV32I core in Verilog, simulated with Verilator | pipelining, hazards, HDL |
-
-- **Resources:** nand2tetris.org; Harris & Harris, *Digital Design and Computer Architecture: RISC-V Edition*; Ben Eater's 8-bit computer videos; *The Rust Book*.
-- **Exit criteria:** the emulator passes the official `riscv-tests` rv32ui suite and runs a C program that prints Fibonacci numbers.
-
-### Mark III: "The Kernel" (weeks 15–22)
-*Operating systems, concurrency and networking.*
-
-| Build | What you learn |
-|---|---|
-| Selected MIT 6.1810 xv6 labs (syscall, pgtbl, traps, cow, lock) | real kernel internals |
-| `stark-os`: a tiny RISC-V kernel in Rust on QEMU (UART, traps, timer interrupts, round-robin scheduler) | bare metal, interrupts, context switching |
-| Lock-free SPSC ring buffer and a work-stealing thread pool in Rust | atomics, memory ordering |
-| Event-driven TCP server using `epoll` in C, load-tested | I/O models, the C10K problem |
-
-- **Resources:** *OSTEP*; the xv6 book; Mara Bos, *Rust Atomics and Locks*; Philipp Oppermann's "Writing an OS in Rust".
-- **Exit criteria:** `stark-os` boots and preemptively switches between 2 or more tasks. The ring buffer is race-free under `loom` and faster than a `Mutex<VecDeque>` in a benchmark. The server handles 10k concurrent connections.
-
----
-
-## Phase 2: Hardware and control (the workshop)
-
-### Mark IV: "Arc Reactor" (weeks 23–30)
-*Electronics, embedded firmware and power: the energy core.*
-
-| Build | What you learn |
-|---|---|
-| Bare-metal STM32: blink an LED by writing registers directly (no HAL), then a UART driver | memory-mapped I/O, datasheets, clock trees |
-| I2C driver for an IMU plus complementary and Madgwick filters | sensor protocols, sensor fusion |
-| FreeRTOS (or Rust Embassy) firmware with separate sensor, control and telemetry tasks | real-time scheduling, priorities, jitter |
-| DC motor with encoder: PID speed control using PWM and an H-bridge | actuators, closed-loop control on real hardware |
-| KiCad PCB: an IMU and motor-driver breakout board, sent to a fab house | schematics, layout, manufacturing |
-
-- **Resources:** Elecia White, *Making Embedded Systems*; Scherz, *Practical Electronics for Inventors*; *The Art of Electronics* (as a reference); Phil's Lab (YouTube) for PCB design.
-- **Exit criteria:** the motor holds its commanded RPM within ±5% under load, the control loop runs at a stable 1 kHz (measure the jitter), and the PCB arrives and works.
-
-### Mark V: "Flight Stabilizers" (weeks 31–38)
-*Control theory and dynamics, all in simulation.*
-
-| Build | What you learn |
-|---|---|
-| Cart-pole from scratch: PID, then pole placement, then LQR, then MPC | state space, controllability, optimal control |
-| System identification: fit a model to logged data from the Mark IV motor | least squares, frequency response |
-| Quadrotor 6-DOF simulator from scratch, with cascaded PID attitude and position control | rigid-body dynamics, quaternions |
-| Swing-up with energy shaping and trajectory optimization (direct collocation) | nonlinear control |
-
-- **Resources:** Steve Brunton's *Control Bootcamp* (YouTube); Åström & Murray, *Feedback Systems*; Russ Tedrake, *Underactuated Robotics* (MIT 6.832, free online); Beard & McLain, *Small Unmanned Aircraft*.
-- **Exit criteria:** LQR balances the cart-pole from 20° with actuator limits. MPC beats LQR when constraints are tight (show the plots). The simulated quadrotor tracks a figure-8 with under 10 cm RMS error.
-
----
-
-## Phase 3: Robotics (the robots)
-
-### Mark VI: "DUM-E" (weeks 39–48)
-*Manipulators: kinematics, dynamics and pick-and-place.*
-
-| Build | What you learn |
-|---|---|
-| FK and IK for a 2-link arm (analytic), then a 6-DOF arm (numerical Jacobian and damped least squares) | screw theory, the product of exponentials, singularities |
-| Trajectory generation (quintic polynomials, trapezoidal velocity profiles) and computed-torque control | manipulator dynamics |
-| MuJoCo simulation, followed by ROS 2 with MoveIt 2 | industry tooling |
-| Vision-based pick-and-place: camera, color/object detection, grasp pose, IK, execution | perception–action loop |
-| *(hardware)* An SO-101 arm (the LeRobot open-source arm) doing the same task for real | sim-to-real |
-
-- **Resources:** Lynch & Park, *Modern Robotics* (free book, plus the Coursera specialization); the MuJoCo docs; the ROS 2 and MoveIt 2 tutorials; Hugging Face LeRobot.
-- **Exit criteria:** at least 80% pick success on a randomly placed block in simulation (and at least 60% on real hardware, if you have the arm).
-
-### Mark VII: "Autopilot" (weeks 49–58)
-*Mobile robots: state estimation, SLAM and planning.*
-
-| Build | What you learn |
-|---|---|
-| Differential-drive simulation with EKF localization, then a particle filter (MCL) | Bayes filters, the motion and sensor models you already know from ML |
-| Occupancy-grid mapping from simulated LiDAR | inverse sensor models |
-| Planners: A*, then RRT*, then a local planner (DWA or pure pursuit) | search, sampling-based planning |
-| Monocular visual odometry with OpenCV on KITTI | epipolar geometry, bundle adjustment |
-| Pose-graph SLAM with GTSAM, then the full Nav2 stack in Gazebo | factor graphs, loop closure |
-
-- **Resources:** Thrun, Burgard & Fox, *Probabilistic Robotics*; Barfoot, *State Estimation for Robotics*; Cyrill Stachniss's lectures (YouTube); Hartley & Zisserman, *Multiple View Geometry* (as a reference).
-- **Exit criteria:** the robot autonomously explores and maps an unseen simulated building and navigates to goals. VO drift is under 2% on a KITTI sequence.
-
----
-
-## Phase 4: Intelligence (the AI)
-
-### Mark VIII: "HUD" (weeks 59–66)
-*Real-time perception at the edge. This builds on your ML strength, so go deep on performance.*
-
-| Build | What you learn |
-|---|---|
-| Hand-written CUDA kernels: tiled matmul, softmax, layernorm, benchmarked against cuBLAS | GPU memory hierarchy, occupancy |
-| Real-time detection, depth estimation and multi-object tracking, fused with the IMU | latency budgets, synchronization |
-| Deploy with TensorRT or Triton (reuse your `triton-server` work), INT8 quantized | edge inference |
-| A HUD overlay: world-locked annotations using a camera pose from VIO | AR fundamentals |
-
-- **Resources:** Kirk & Hwu, *Programming Massively Parallel Processors*; the CUDA C++ Programming Guide; the TensorRT docs.
-- **Exit criteria:** the full pipeline runs at 30 FPS or more with under 50 ms glass-to-glass latency on a Jetson (or a laptop GPU).
-
-### Mark IX: "J.A.R.V.I.S." (weeks 67–76)
-*The assistant that ties everything together.*
-
-| Build | What you learn |
-|---|---|
-| Voice pipeline: wake word, streaming STT (Whisper), an LLM agent with tool use, streaming TTS | real-time audio, turn-taking |
-| Tools: control the DUM-E simulator, query robot and sensor state, run code, and handle home automation over MQTT | agent design, tool schemas |
-| Memory (episodic and semantic), plus an evaluation suite for tool-call accuracy | agent evaluation |
-| A safety layer: any command that moves hardware needs explicit confirmation and passes workspace-limit checks | safe actuation |
-
-- **Resources:** Whisper, an LLM API with tool use (or a local model), MQTT/Mosquitto, Home Assistant.
-- **Exit criteria:** "JARVIS, pick up the red block and put it in the bin" works end to end in simulation, with at least 90% tool-call accuracy on your evaluation set.
-
-### Mark X: "Suit Up" (week 77 onward): capstone
-Pick one and integrate everything:
-- **Mobile manipulator:** Mark VII's base plus Mark VI's arm, driven by JARVIS.
-- **Learned policies:** imitation learning (ACT or diffusion policy via LeRobot) and RL with sim-to-real transfer.
-- **Wearable:** an EMG- or gesture-controlled arm with the HUD.
-
----
-
-## Continuous tracks (run alongside the Marks)
+## Continuous tracks (alongside the Marks)
 
 | Track | Plan |
 |---|---|
-| **Math** | Linear algebra (Strang, 18.06), probability, optimization (Boyd & Vandenberghe, *Convex Optimization*), Lie groups for robotics (Solà, *A micro Lie theory*). About 1 hr/week. |
-| **Mechanical / CAD** | Onshape or FreeCAD from Mark IV onward. Design mounts and enclosures for every hardware Mark and 3D print them. |
-| **Physics** | Rigid-body dynamics, and the basics of electromagnetism and circuits, alongside Marks IV–V. |
-| **Writing** | One blog post per Mark. Teaching it is how you know you understand it. |
-
-## Milestones at a glance
-
-```
-Month:  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19+
-Mk I    ███
-Mk II      ████
-Mk III         ████
-Mk IV              ████
-Mk V                   ████
-Mk VI                      █████
-Mk VII                          █████
-Mk VIII                              ████
-Mk IX                                    █████
-Mk X                                          ███████>
-```
+| **Math** | Strang 18.06 (Marks I, V), probability (VII), optimization (Boyd, V and VII), Lie groups (Solà, V–VII). About 1 hr/week. |
+| **Mechanical / CAD** | Onshape or FreeCAD from Mark IV onward: design and 3D-print a mount or enclosure for every hardware Mark |
+| **Writing** | One public post per Mark: the boss fight, the numbers and the lessons |
+| **Spaced review** | 20 minutes every Sunday: 5 random quiz questions from finished Marks ([why](docs/method.md#the-loop)) |

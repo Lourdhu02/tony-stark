@@ -30,7 +30,7 @@ bar() { # bar PASS TOTAL WIDTH
 }
 
 SUMMARY=${GITHUB_STEP_SUMMARY:-/dev/null}
-broken=0 grand_pass=0 grand_total=0
+broken=0 grand_pass=0 grand_total=0 prev_locked=0
 
 printf '\n%s  ┌──────────────────────────────────────────────────────────┐%s\n' "$D" "$X"
 printf '%s  │%s %sSTARK INDUSTRIES%s %s// ARMORY DIAGNOSTICS%s                   %s│%s\n' "$D" "$X" "$B" "$X" "$D" "$X" "$D" "$X"
@@ -46,8 +46,22 @@ for mark in "${MARKS[@]}"; do
     name=$(basename "$mark")                      # mark-01-box-of-scraps
     num=$(cut -d- -f2 <<<"$name")                 # 01
     title=$(cut -d- -f3- <<<"$name" | tr '-' ' ' | tr '[:lower:]' '[:upper:]')
+    [ "$title" = "DUM E" ] && title="DUM-E"
     completed=$(grep -v '^#' "$mark/COMPLETED" 2>/dev/null || true)
 
+    shopt -s nullglob
+    projects=("$mark"/[0-9][0-9]-*/)
+    shopt -u nullglob
+    if [ ${#projects[@]} -eq 0 ]; then # a dossier with no code yet
+        [ "$prev_locked" -eq 0 ] && echo
+        printf '  %sMARK %s · %-28s locked%s\n' "$D" "$num" "$title" "$X"
+        prev_locked=1
+        echo "*MARK $num · $title: locked*" >> "$SUMMARY"
+        echo >> "$SUMMARY"
+        continue
+    fi
+
+    prev_locked=0
     printf '\n  %sMARK %s%s %s· %s%s\n\n' "$B" "$num" "$X" "$D" "$title" "$X"
     {
         echo "### MARK $num · $title"
@@ -56,7 +70,7 @@ for mark in "${MARKS[@]}"; do
         echo '|---|---|---|---|'
     } >> "$SUMMARY"
 
-    for proj in "$mark"/[0-9][0-9]-*/; do
+    for proj in "${projects[@]}"; do
         proj=${proj%/}
         pname=$(basename "$proj")
         out=$(make -s -C "$proj" test 2>&1)

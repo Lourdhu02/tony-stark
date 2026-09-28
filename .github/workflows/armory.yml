@@ -33,6 +33,7 @@ jobs:
       - name: Build every Mark (-Werror)
         run: |
           for mark in marks/mark-*/; do
+            [ -f "$mark/Makefile" ] || continue   # dossier-only Marks have no code yet
             make -C "$mark" all
           done
 

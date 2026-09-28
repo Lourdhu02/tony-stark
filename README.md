@@ -38,6 +38,30 @@ No tutorial-following, and no finishing without proof.
  X     SUIT UP             capstone: integrate everything              · locked
 ```
 
+<sub>Dossiers: [I](marks/mark-01-box-of-scraps) · [II](marks/mark-02-silicon) · [III](marks/mark-03-the-kernel) · [IV](marks/mark-04-arc-reactor) · [V](marks/mark-05-flight-stabilizers) · [VI](marks/mark-06-dum-e) · [VII](marks/mark-07-autopilot) · [VIII](marks/mark-08-hud) · [IX](marks/mark-09-jarvis) · [X](marks/mark-10-suit-up) · every Mark is fully planned; code scaffolding unlocks as you reach it.</sub>
+
+### `> cat start_here`
+
+```text
+01  read docs/method.md                    the weekly loop, and how to get unstuck
+02  score docs/self-assessment.md          your baseline, as a number
+03  open marks/mark-01-box-of-scraps       the syllabus for weeks 1–6
+04  read notes/01-memory-hierarchy.md      theory before code
+05  make -C marks/mark-01-box-of-scraps test
+```
+
+### `> du -sh knowledge/`
+
+| Layer | What's inside |
+|---|---|
+| [**Dossiers ×10**](ROADMAP.md#the-ten-marks) | a week-by-week syllabus (76 weeks + capstone), system specs with numeric exit criteria, pitfalls, a boss fight per Mark |
+| [**Field manuals ×5**](marks/mark-01-box-of-scraps/notes) | derivations and diagrams: caches, LU and floating point, integrators, allocators, processes and signals |
+| [**Project briefs ×4**](marks/mark-01-box-of-scraps) | specs + **19 progressive hints** (nudge → approach → algorithm, never code) |
+| **Recall** | **72 quiz questions** with worked answers · **48 interview questions** |
+| [**Skill tree**](docs/skill-tree.md) | what unlocks what, and where your ML background plugs in |
+| [**Library**](docs/library.md) | every book and course, mapped to Marks and chapters |
+| [**Self-assessment**](docs/self-assessment.md) | 14 domains × 6 levels: your Stark score, re-scored after every Mark |
+
 ### `> cat boot_sequence`
 
 ```sh
@@ -76,10 +100,12 @@ Every bar starts empty. The tests are the spec: fill them.
 
 ```text
 tony-stark/
-├── ROADMAP.md            the full plan: phases, resources, exit criteria
-├── HARDWARE.md           what to buy, and when (sim-first: ~$150 minimum)
+├── ROADMAP.md            overview: ten Marks, phases, timeline
+├── HARDWARE.md           what to buy, when, and how not to set it on fire
+├── docs/                 method · skill tree · library · self-assessment
 ├── marks/
-│   └── mark-01-box-of-scraps/
+│   ├── mark-01-box-of-scraps/   ▶ active: 4 systems, 79 tests, field manuals
+│   └── mark-02 … mark-10/       dossiers (code unlocks when you arrive)
 ├── lab-notes/            weekly log (copy TEMPLATE.md)
 ├── tools/armory.sh       test runner + dashboard
 └── .github/workflows/    ci: -Werror, asan/ubsan, regression gate
@@ -90,6 +116,7 @@ tony-stark/
 | | |
 |---|---|
 | **Plan** | [`ROADMAP.md`](ROADMAP.md): four phases, ten Marks, about 18 months at 10–12 hrs/week |
+| **Method** | [`docs/method.md`](docs/method.md): read → derive → build → measure → teach → review |
 | **Now** | [`Mark I · Box of Scraps`](marks/mark-01-box-of-scraps): matrix library, physics sim, `malloc`, a Unix shell |
 | **Kit** | [`HARDWARE.md`](HARDWARE.md): nothing needed until Mark IV |
 | **Log** | [`lab-notes/`](lab-notes) |
