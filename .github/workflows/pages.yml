@@ -35,23 +35,28 @@ jobs:
           python3 site/build.py
           mkdocs build --strict -f site/mkdocs.yml
 
-      - name: Upload Pages artifact
-        if: github.ref == 'refs/heads/main'
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: site/_build
-
   deploy:
-    name: deploy to GitHub Pages
-    if: github.ref == 'refs/heads/main'
+    name: publish to gh-pages
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-24.04
     permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      contents: write
     steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install MkDocs Material
+        run: pip install -r site/requirements.txt
+
+      - name: Build and push the site to the gh-pages branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          python3 site/build.py
+          mkdocs gh-deploy --force --no-history -f site/mkdocs.yml

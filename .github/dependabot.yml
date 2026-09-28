@@ -6,9 +6,11 @@ updates:
       interval: monthly
   - package-ecosystem: pip
     directory: /marks/mark-11-blueprint/lab
+    versioning-strategy: increase-if-necessary   # don't raise floors learners must meet
     schedule:
       interval: monthly
   - package-ecosystem: pip
     directory: /site
+    versioning-strategy: increase-if-necessary
     schedule:
       interval: monthly
