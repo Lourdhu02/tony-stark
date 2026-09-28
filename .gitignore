@@ -1,0 +1,10 @@
+build/
+*.o
+*.so
+*.csv
+out.txt
+
+.vscode/
+.idea/
+.DS_Store
+__pycache__/

@@ -32,15 +32,22 @@ Weekly rhythm (about 11 hrs): 2 theory sessions of about 2 h, 2 build sessions o
 ### Mark I: "Box of Scraps" (weeks 1–6)
 *Systems programming in C, plus numerical simulation from zero.*
 
+➜ **Built:** [`marks/mark-01-box-of-scraps`](marks/mark-01-box-of-scraps), with stubs, 79 tests and CI.
+
 | Build | What you learn |
 |---|---|
-| `stark-shell`: a Unix shell with pipes, redirection, background jobs and signals | processes, `fork`/`exec`, file descriptors, syscalls |
-| `stark-malloc`: an allocator with free lists and coalescing, used via `LD_PRELOAD` | virtual memory, heap layout, fragmentation |
-| `linalg.c`: a matrix library (mul, transpose, LU solve, inverse) with tests | memory layout, cache effects, numerical stability |
-| `sim/`: Euler, RK4 and symplectic integrators simulating a pendulum and a spring-mass system | ODEs, numerical error, energy conservation |
+| `01-linalg`: a matrix library (multiplication, LU with pivoting, solve, inverse, determinant) plus a cache-aware matmul | memory layout, cache effects, numerical stability |
+| `02-sim`: Euler, RK4 and symplectic Verlet integrators on a pendulum and a spring-mass system | ODEs, convergence order, energy conservation |
+| `03-malloc`: an allocator with splitting and coalescing, run under real programs via `LD_PRELOAD` | virtual memory, heap layout, fragmentation |
+| `04-shell`: `stark-shell`, a Unix shell with pipes, redirection, quoting, background jobs and signals | processes, `fork`/`exec`, file descriptors, signals |
 
-- **Resources:** *CS:APP* (Bryant & O'Hallaron) ch. 1–3 and 8–9; *OSTEP* (virtualization part); Beej's guides.
-- **Exit criteria:** `ls -l | grep .c | wc -l > out.txt` works in your shell. The allocator can run `python3` via `LD_PRELOAD`. RK4 pendulum energy drift stays under 0.1% over 100 s, and you can explain why symplectic integration beats RK4 over long horizons.
+- **Resources:** *CS:APP* (Bryant & O'Hallaron) ch. 6, 8 and 9; *OSTEP* (the virtualization part); Beej's guides.
+- **Exit criteria:**
+  - `mat_mul_fast` is 3x or more faster than naive at n=512.
+  - RK4 pendulum energy drift stays under 0.1% over 100 s at dt=0.05, and you can explain why Verlet beats RK4 over long horizons.
+  - `python3` runs on your allocator.
+  - `ls | grep '\.c$' | wc -l > out.txt` works in your shell.
+  - All 79 tests pass.
 
 ### Mark II: "Silicon" (weeks 7–14)
 *How computers actually work, from NAND gates to a RISC-V CPU.*

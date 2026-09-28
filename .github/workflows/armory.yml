@@ -1,0 +1,40 @@
+name: armory
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: armory-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  diagnostics:
+    name: diagnostics (${{ matrix.build }})
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - build: release
+            san: "0"
+          - build: asan+ubsan
+            san: "1"
+    env:
+      SAN: ${{ matrix.san }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build every Mark (-Werror)
+        run: |
+          for mark in marks/mark-*/; do
+            make -C "$mark" all
+          done
+
+      - name: Run armory diagnostics
+        run: tools/armory.sh
