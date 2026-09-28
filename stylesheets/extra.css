@@ -1,0 +1,21 @@
+/* Matrix-green accents on top of Material's slate theme. */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #050805;
+  --md-code-bg-color: #0a120a;
+  --md-accent-fg-color: #00ff41;
+  --md-typeset-a-color: #39d353;
+}
+[data-md-color-scheme="slate"] .md-header,
+[data-md-color-scheme="slate"] .md-tabs {
+  background-color: #050805;
+  border-bottom: 1px solid #0a7a2a;
+}
+.md-typeset pre > code {
+  font-variant-ligatures: none; /* keep ASCII art aligned */
+}
+.md-typeset code {
+  white-space: pre;
+}
+.md-typeset table:not([class]) {
+  font-size: 0.72rem;
+}
