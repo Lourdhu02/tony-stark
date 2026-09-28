@@ -18,7 +18,7 @@
 ML engineer, going full-stack from first principles:
 **silicon → kernels → firmware → control → robots → the AI that drives them.**
 
-Ten **Marks**, like the suits. Every Mark is built from first principles, judged by measurable exit criteria, and written up.
+Thirteen **Marks**, like the suits. Every Mark is built from first principles, judged by measurable exit criteria, and written up.
 No tutorial-following, and no finishing without proof.
 
 ### `> ./armory --status`
@@ -36,9 +36,13 @@ No tutorial-following, and no finishing without proof.
  VIII  HUD                 cuda kernels · edge perception · tensorrt   · locked
  IX    J.A.R.V.I.S.        voice → llm agent → robot, safely           · locked
  X     SUIT UP             capstone: integrate everything              · locked
+ ────  PHASE 5 · ADVANCED ROBOTICS (YEAR 2) ─────────────────────────────────────────
+ XI    BLUEPRINT           lie groups · rnea · crba · aba · contact    ◇ textbook + lab ready
+ XII   HULKBUSTER          ddp · mpc · centroidal · whole-body qp      · locked
+ XIII  EXTREMIS            ppo · sac · sim-to-real · diffusion · vla   · locked
 ```
 
-<sub>Dossiers: [I](marks/mark-01-box-of-scraps) · [II](marks/mark-02-silicon) · [III](marks/mark-03-the-kernel) · [IV](marks/mark-04-arc-reactor) · [V](marks/mark-05-flight-stabilizers) · [VI](marks/mark-06-dum-e) · [VII](marks/mark-07-autopilot) · [VIII](marks/mark-08-hud) · [IX](marks/mark-09-jarvis) · [X](marks/mark-10-suit-up) · every Mark is fully planned; code scaffolding unlocks as you reach it.</sub>
+<sub>Dossiers: [I](marks/mark-01-box-of-scraps) · [II](marks/mark-02-silicon) · [III](marks/mark-03-the-kernel) · [IV](marks/mark-04-arc-reactor) · [V](marks/mark-05-flight-stabilizers) · [VI](marks/mark-06-dum-e) · [VII](marks/mark-07-autopilot) · [VIII](marks/mark-08-hud) · [IX](marks/mark-09-jarvis) · [X](marks/mark-10-suit-up) · [XI](marks/mark-11-blueprint) · [XII](marks/mark-12-hulkbuster) · [XIII](marks/mark-13-extremis) · every Mark is fully planned; code scaffolding unlocks as you reach it.</sub>
 
 ### `> cat start_here`
 
@@ -54,13 +58,14 @@ No tutorial-following, and no finishing without proof.
 
 | Layer | What's inside |
 |---|---|
-| [**Dossiers ×10**](ROADMAP.md#the-ten-marks) | a week-by-week syllabus (76 weeks + capstone), system specs with numeric exit criteria, pitfalls, a boss fight per Mark |
+| [**Dossiers ×13**](ROADMAP.md#the-thirteen-marks) | a week-by-week syllabus (128 weeks across 5 phases), system specs with numeric exit criteria, pitfalls, a boss fight per Mark |
+| [**Advanced robotics textbook**](marks/mark-11-blueprint/chapters) | 9 graduate chapters with full derivations: Lie groups, Newton–Euler, RNEA, CRBA, passivity, ABA, contact · a 42-test lab validated against physics |
 | [**Field manuals ×5**](marks/mark-01-box-of-scraps/notes) | derivations and diagrams: caches, LU and floating point, integrators, allocators, processes and signals |
-| [**Project briefs ×4**](marks/mark-01-box-of-scraps) | specs + **19 progressive hints** (nudge → approach → algorithm, never code) |
-| **Recall** | **72 quiz questions** with worked answers · **48 interview questions** |
+| **Project briefs ×7** ([Mark I](marks/mark-01-box-of-scraps), [Mark XI](marks/mark-11-blueprint)) | specs + **32 progressive hints** (nudge → approach → algorithm, never code) |
+| **Recall** | **100 quiz questions** with worked answers · **65 interview questions** |
 | [**Skill tree**](docs/skill-tree.md) | what unlocks what, and where your ML background plugs in |
 | [**Library**](docs/library.md) | every book and course, mapped to Marks and chapters |
-| [**Self-assessment**](docs/self-assessment.md) | 14 domains × 6 levels: your Stark score, re-scored after every Mark |
+| [**Self-assessment**](docs/self-assessment.md) | 16 domains × 6 levels: your Stark score, re-scored after every Mark |
 
 ### `> cat boot_sequence`
 
@@ -76,10 +81,10 @@ make -C marks/mark-01-box-of-scraps test
 
   MARK 01 · BOX OF SCRAPS
 
-  01-linalg  ░░░░░░░░░░░░░░░░░░░░░░░░   0/14  OFFLINE
-  02-sim     ░░░░░░░░░░░░░░░░░░░░░░░░   0/13  OFFLINE
-  03-malloc  ░░░░░░░░░░░░░░░░░░░░░░░░   0/19  OFFLINE
-  04-shell   ░░░░░░░░░░░░░░░░░░░░░░░░   0/33  OFFLINE
+  01-linalg    ░░░░░░░░░░░░░░░░░░░░░░░░   0/14  OFFLINE
+  02-sim       ░░░░░░░░░░░░░░░░░░░░░░░░   0/13  OFFLINE
+  03-malloc    ░░░░░░░░░░░░░░░░░░░░░░░░   0/19  OFFLINE
+  04-shell     ░░░░░░░░░░░░░░░░░░░░░░░░   0/33  OFFLINE
 
   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  0%  0/79 systems nominal
 ```
@@ -105,7 +110,9 @@ tony-stark/
 ├── docs/                 method · skill tree · library · self-assessment
 ├── marks/
 │   ├── mark-01-box-of-scraps/   ▶ active: 4 systems, 79 tests, field manuals
-│   └── mark-02 … mark-10/       dossiers (code unlocks when you arrive)
+│   ├── mark-02 … mark-10/       dossiers (code unlocks when you arrive)
+│   ├── mark-11-blueprint/       ◇ advanced robotics textbook (9 chapters) + 42-test lab
+│   └── mark-12, mark-13/        dossiers: optimal control and legged robots, robot learning
 ├── lab-notes/            weekly log (copy TEMPLATE.md)
 ├── tools/armory.sh       test runner + dashboard
 └── .github/workflows/    ci: -Werror, asan/ubsan, regression gate
@@ -115,7 +122,7 @@ tony-stark/
 
 | | |
 |---|---|
-| **Plan** | [`ROADMAP.md`](ROADMAP.md): four phases, ten Marks, about 18 months at 10–12 hrs/week |
+| **Plan** | [`ROADMAP.md`](ROADMAP.md): five phases, thirteen Marks; Year 1 builds the stack, Year 2 goes deep into advanced robotics |
 | **Method** | [`docs/method.md`](docs/method.md): read → derive → build → measure → teach → review |
 | **Now** | [`Mark I · Box of Scraps`](marks/mark-01-box-of-scraps): matrix library, physics sim, `malloc`, a Unix shell |
 | **Kit** | [`HARDWARE.md`](HARDWARE.md): nothing needed until Mark IV |

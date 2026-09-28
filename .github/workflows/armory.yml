@@ -30,6 +30,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python lab dependencies
+        run: pip install -r marks/mark-11-blueprint/lab/requirements.txt
+
       - name: Build every Mark (-Werror)
         run: |
           for mark in marks/mark-*/; do

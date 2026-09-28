@@ -11,12 +11,12 @@ The [skill tree](docs/skill-tree.md) shows how the Marks depend on each other, a
 | | |
 |---|---|
 | **Starting point** | Working ML engineer: Python, PyTorch, training and serving models. ML basics are skipped; ML intuition is used everywhere. |
-| **Time** | 10–12 hrs/week ([the weekly loop](docs/method.md#the-weekly-budget-about-11-hours)), about 18 months for Marks I–IX, then the capstone |
+| **Time** | 10–12 hrs/week ([the weekly loop](docs/method.md#the-weekly-budget-about-11-hours)): about 18 months for Marks I–IX, then the capstone. Phase 5 (Marks XI–XIII) is Year 2. |
 | **Hardware** | Simulation first. Only Mark IV *requires* hardware (about $150). See [HARDWARE.md](HARDWARE.md). |
 | **Languages** | C (I, III, IV) · Rust (II, III) · Python (V–IX) · C++ (ROS 2, as needed) · CUDA (VIII) |
-| **Target** | A Stark score of **7/10** on the [self-assessment](docs/self-assessment.md): level 3 ("builder") or better in every domain |
+| **Target** | A Stark score of **7/10** on the [self-assessment](docs/self-assessment.md) after Phase 4 (level 3, "builder", or better in every domain), and **8/10** after Phase 5 |
 
-## The ten Marks
+## The thirteen Marks
 
 | Mark | Codename | Weeks | The question it answers | Headline exit criterion | Dossier |
 |---|---|---|---|---|---|
@@ -30,6 +30,9 @@ The [skill tree](docs/skill-tree.md) shows how the Marks depend on each other, a
 | **VIII** | HUD | 59–66 | How do you see the world in real time on a small computer? | ≥ 30 FPS, < 50 ms glass-to-glass, world-locked AR labels | [open →](marks/mark-08-hud) |
 | **IX** | J.A.R.V.I.S. | 67–76 | How does an AI safely act on the physical world? | ≥ 90% tool accuracy, 0 unsafe actions, e-stop < 200 ms | [open →](marks/mark-09-jarvis) |
 | **X** | Suit Up | 77+ | Can I integrate it all into one system? | a capstone meeting its design-doc metric, with confidence intervals | [open →](marks/mark-10-suit-up) |
+| **XI** | Blueprint | 91–100 | What are the exact equations of motion, and how do engines compute them? | your RNEA, CRBA and ABA agree with physics: Lagrangian, passivity and energy (42 tests) | [open →](marks/mark-11-blueprint) |
+| **XII** | Hulkbuster | 101–114 | How do you plan and control motion optimally, including walking? | a MuJoCo quadruped trots under your centroidal MPC + whole-body QP | [open →](marks/mark-12-hulkbuster) |
+| **XIII** | Extremis | 115–128 | When should a robot learn instead, and how does learning survive reality? | RL vs MPC head-to-head; diffusion policy vs a scripted pipeline, with CIs | [open →](marks/mark-13-extremis) |
 
 ## Phases and checkpoints
 
@@ -39,11 +42,12 @@ The [skill tree](docs/skill-tree.md) shows how the Marks depend on each other, a
 | **2 · Hardware and control** (the workshop) | IV–V | make physical things move precisely, on time | re-score: Embedded, Control and Dynamics reach 3 |
 | **3 · Robotics** (the robots) | VI–VII | build robots that perceive, localize, plan and manipulate | re-score: Kinematics, Estimation and Planning reach 3 |
 | **4 · Intelligence** (the AI) | VIII–X | put real-time AI on robots, safely, and prove it works | re-score: GPU, Perception and Agents reach 3–4 → **Stark score ≥ 7** |
+| **5 · Advanced robotics** (Year 2) | XI–XIII | derive and implement the dynamics, optimal control and learning at the frontier of the field | re-score: Dynamics, Optimal control and Robot learning reach 4 → **Stark score ≥ 8** |
 
 ## Timeline
 
 ```text
-week    1         11        21        31        41        51        61        71        81
+week    1         11        21        31        41        51        61        71        81        91        101       111       121
 Mk I    ██████
 Mk II         ████████
 Mk III                ████████
@@ -53,7 +57,11 @@ Mk VI                                         ██████████
 Mk VII                                                  ██████████
 Mk VIII                                                           ████████
 Mk IX                                                                     ██████████
-Mk X                                                                                ██████████████▶
+Mk X                                                                                ██████████████
+Mk XI                                                                                             ██████████
+Mk XII                                                                                                      ██████████████
+Mk XIII                                                                                                                   ██████████████
+        └──────────────────────────────────────────────────────────────────────────── phases 1–4 ┘└─────────────────────────── phase 5 ┘
 ```
 
 Slipping is normal. A Mark is done when its exit criteria are met, not when its weeks run out. Never skip a Mark's exit criteria to stay on schedule; move the schedule instead.

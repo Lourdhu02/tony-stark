@@ -44,11 +44,19 @@ flowchart TD
         POLICY["Learned policies: IL / RL<br/>Mark X"]:::ai
     end
 
+    subgraph P5["PHASE 5 · ADVANCED ROBOTICS"]
+        RBD["Lie groups & RBD algorithms<br/>Mark XI"]:::ai
+        OC["Optimal control: DDP · MPC<br/>Mark XII"]:::ai
+        LEG["Legged locomotion: centroidal · WBC<br/>Mark XII"]:::ai
+        RL["Robot learning: RL · IL · VLA<br/>Mark XIII"]:::ai
+    end
+
     style P1 fill:#0a120a,stroke:#00ff41,color:#00ff41
     style P2 fill:#0a120a,stroke:#39d353,color:#39d353
     style P3 fill:#0a120a,stroke:#7ee787,color:#7ee787
     style P4 fill:#0a120a,stroke:#a5f3a5,color:#a5f3a5
     linkStyle default stroke:#2ea043,stroke-width:1.2px
+    style P5 fill:#0a120a,stroke:#d2f7d2,color:#d2f7d2
 
     C --> PROC --> OS
     C --> ARCH --> OS
@@ -81,6 +89,16 @@ flowchart TD
     PLAN --> POLICY
     PERC --> POLICY
     AGENT --> POLICY
+    DYN --> RBD
+    KIN --> RBD
+    EST --> RBD
+    RBD --> OC
+    CTRL --> OC
+    OC --> LEG
+    RBD --> LEG
+    OC --> RL
+    POLICY --> RL
+    LEG --> RL
 ```
 
 ## Why each edge exists
@@ -97,6 +115,9 @@ flowchart TD
 | Concurrency → ROS 2 | ROS 2 is callbacks, executors, QoS and shared memory. It's a concurrency framework wearing a robotics hat. |
 | Computer architecture → CUDA | GPU performance is about memory hierarchy, coalescing and occupancy, which is Mark I's cache lesson at 1000× scale. |
 | Perception + ROS → Agents | JARVIS can only act on a world it can perceive, through interfaces the robot exposes. |
+| Dynamics + Kinematics + Estimation → RBD algorithms (XI) | Mark XI derives, from first principles, the machinery Marks V–VII used as black boxes |
+| RBD + Control → Optimal control (XII) | iLQR/DDP and MPC differentiate and roll out exactly the RNEA/ABA you wrote in Mark XI |
+| Optimal control → Robot learning (XIII) | RL approximates the same Bellman equation; the MPC controllers become baselines, experts and teachers for learned policies |
 
 ## Your ML head start
 

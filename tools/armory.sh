@@ -92,7 +92,7 @@ for mark in "${MARKS[@]}"; do
             broken=1
         fi
 
-        printf '  %s%-10s%s %s%s%s %3d/%-3d %s\n' "$G" "$pname" "$X" "$G" "$(bar "$pass" "$total" 24)" "$X" "$pass" "$total" "$status"
+        printf '  %s%-12s%s %s%s%s %3d/%-3d %s\n' "$G" "$pname" "$X" "$G" "$(bar "$pass" "$total" 24)" "$X" "$pass" "$total" "$status"
         echo "| \`$pname\` | \`$(bar "$pass" "$total" 20)\` | $pass/$total | $plain |" >> "$SUMMARY"
 
         if [ $VERBOSE -eq 1 ] || [ "$plain" = "REGRESSION" ] || [ "$plain" = "BUILD FAILED" ]; then

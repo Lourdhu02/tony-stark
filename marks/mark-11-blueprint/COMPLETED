@@ -1,0 +1,2 @@
+# Systems whose exit criteria are met, one per line (e.g. 01-lie).
+# From then on, CI fails if any of them regresses.

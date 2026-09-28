@@ -49,6 +49,9 @@ desk
 | VII | Gazebo · Nav2 · SLAM Toolbox · GTSAM · the KITTI odometry dataset |
 | VIII | CUDA 12+ · Nsight Systems and Compute · TensorRT · ONNX |
 | IX | faster-whisper · openWakeWord · Silero VAD · Piper · Mosquitto · an LLM with tool use |
+| XI | Python 3.12 · NumPy · pytest (`pip install -r marks/mark-11-blueprint/lab/requirements.txt`) · *(optional)* Pinocchio for cross-checks |
+| XII | MuJoCo + MuJoCo Menagerie · OSQP · *(optional)* Crocoddyl, acados |
+| XIII | PyTorch (CUDA) · Gymnasium · MuJoCo Playground or Isaac Lab · LeRobot |
 
 ## Safety
 

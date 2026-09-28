@@ -92,6 +92,8 @@ Your capstone starts with this document, written *before* any code:
 
 **The final demo.** A single unedited video of the capstone meeting its exit metric, a public write-up with the design doc and eval results, and a 20-minute talk (for a meetup, or recorded). Then re-score the [self-assessment](../../docs/self-assessment.md). The target is **7/10 or more**.
 
+**What's next:** Phase 5, Year 2. [Mark XI · Blueprint](../mark-11-blueprint) opens the advanced robotics textbook: rigid-body dynamics from first principles, then optimal control and legged robots (XII) and robot learning (XIII).
+
 ### `> cat library`
 
 | Source | Use |
